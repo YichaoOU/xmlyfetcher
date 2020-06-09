@@ -137,8 +137,9 @@ decode_json() {
 
 statement=`cat << EOF
 import json,sys
+from importlib import reload
 reload(sys)
-sys.setdefaultencoding("utf8")
+# sys.setdefaultencoding("utf8")
 try:
     print(json.dumps(json.load(sys.stdin)[sys.argv[1]],ensure_ascii=False))
 except KeyError as e:
